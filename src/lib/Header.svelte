@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import Modal from './helpers/Modal.svelte';
+	import { makeid } from './helpers/seedHelper';
 	let showModal: boolean = false;
 
 	let customSeed: string;
@@ -9,6 +10,11 @@
 	//on click outside of modal or press enter
 	function newSeedReload() {
 		goto(`/game/${customSeed}`);
+	}
+
+	function randomSeedReload() {
+		let seed = makeid(8);
+		goto(`/game/${seed}`)
 	}
 
 	let modal: Modal;
@@ -24,7 +30,10 @@
 
 <main>
 	<p>Color Game</p>
-	<button class={showModal ? 'held' : ''} on:click={() => (showModal = true)}> Seed </button>
+	<div class="buttons">
+		<button on:click={randomSeedReload}>New</button>
+		<button class={showModal ? 'held' : ''} on:click={() => (showModal = true)}>Seed</button>
+	</div>
 	<Modal bind:this={modal} bind:showModal on:close={newSeedReload}>
 		<input type="text" bind:value={customSeed} on:keypress={detectEnterPress} />
 	</Modal>
@@ -85,6 +94,12 @@
 		background-color: rgba(255, 255, 255, 0.9);
 		transform: translate(0.2rem, 0.2rem);
 		box-shadow: 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.5);
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
 	}
 
 	/*media query for if screen is less than 600px wide*/
