@@ -91,7 +91,7 @@
 	}
 	/* Firefox */
 	input[type='number'] {
-		-moz-appearance: textfield;
+		appearance: textfield;
 	}
 
 	label:nth-child(1) {
