@@ -41,6 +41,7 @@
 		width: 80%;
 		padding: 2rem;
 		display: grid;
+		gap: 16px;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		place-items: center;
