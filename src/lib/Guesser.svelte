@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { rgbToHex } from '$lib/helpers/colorHelper';
 
 	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
@@ -91,7 +90,7 @@
 	}
 	/* Firefox */
 	input[type='number'] {
-		-moz-appearance: textfield;
+		appearance: textfield;
 	}
 
 	label:nth-child(1) {
