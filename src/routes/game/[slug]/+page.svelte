@@ -13,7 +13,6 @@
 
     function submitGuess() {
         goto(`/result/${color.substring(1)}/${guess.substring(1)}`);
-		location.reload();
     }
 </script>
 
