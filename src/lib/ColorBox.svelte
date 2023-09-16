@@ -11,4 +11,9 @@
 		width: 100%;
 		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
 	}
+	@media screen and (max-width: 768px) {
+		div {
+			aspect-ratio: 3 / 1;
+		}
+	}
 </style>

@@ -30,4 +30,12 @@
 	p:nth-child(3) {
 		place-self: center end;
 	}
+	@media screen and (max-width: 768px) {
+		main {
+			padding: 2rem 0 2rem 0;
+		}
+		p {
+			width: 100%;
+		}
+	}
 </style>
