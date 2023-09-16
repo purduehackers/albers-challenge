@@ -20,12 +20,15 @@
 </script>
 
 <main>
-	<div>
+	<div class="results">
 		<ColorBox color={"#"+data.actual} />
 		<Result {actual} {guess} />
 		<ColorBox color={"#"+data.guess} />
 	</div>
-	<p>Score: {score}%</p>
+	<div class="scoreContainer">
+		<p>Score: {score}%</p>
+		<button class="playAgain">Play again</button>
+	</div>
 </main>
 
 <style>
@@ -34,10 +37,39 @@
 		flex-direction: column;
 		padding: 2rem;
 	}
-	main > div {
+	.results {
 		display: flex;
 		flex-direction: column;
 	}
+	.scoreContainer {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+	.playAgain {
+		margin: 0 auto 0 auto;
+		padding: 0 1rem 0 1rem;
+		line-height: 3rem;
+		height: 3rem;
+		border-radius: 1rem;
+		border: 0.2rem solid black;
+		background-color: rgba(255, 255, 255, 0.5);
+		font-size: 2rem;
+		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
+		transition-duration: 0.1s;
+	}
+	.playAgain:hover {
+		background-color: rgba(255, 255, 255, 0.8);
+		transform: translate(-0.1rem, -0.1rem);
+		box-shadow: 0.6rem 0.6rem 0rem rgba(0, 0, 0, 0.5);
+	}
+	p {
+		font-size: 2.5rem;
+		color: white;
+		text-align: center;
+	}
+
 	@media screen and (min-width: 768px) {
 		main {
 			display: grid;
@@ -45,7 +77,7 @@
 			grid-template-columns: 1fr;
 			grid-template-rows: 2fr 1fr 1fr;
 		}
-		main > div {
+		.results {
 			display: grid;
 			height: 20rem;
 			grid-template-columns: 1fr 2fr 1fr;
@@ -53,11 +85,8 @@
 			grid-template-rows: 1fr;
 			place-items: center;
 		}
-	}
-	p {
-		font-size: 3rem;
-		color: white;
-		text-align: center;
-		padding: 2rem;
+		p {
+			font-size: 3rem;
+		}
 	}
 </style>
