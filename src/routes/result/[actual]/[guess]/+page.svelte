@@ -4,12 +4,18 @@
 	import { hexToRgb } from '$lib/helpers/colorHelper';
 	import type { PageData } from './$types';
 	import type { rgbColor } from '$lib/types/rgbColor';
+	import { makeid } from '$lib/helpers/seedHelper';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
   	
 	const actual: rgbColor = hexToRgb("#"+data.actual);
 	const guess: rgbColor = hexToRgb("#"+data.guess);
 
+	function randomSeedReload() {
+		let seed = makeid(8);
+		goto(`/game/${seed}`)
+	}
 	
 	let score = 0;
 	score += Math.abs(actual.r - guess.r);
@@ -27,7 +33,7 @@
 	</div>
 	<div class="scoreContainer">
 		<p>Score: {score}%</p>
-		<button class="playAgain">Play again</button>
+		<button class="playAgain" on:click={randomSeedReload}>Play again</button>
 	</div>
 </main>
 
