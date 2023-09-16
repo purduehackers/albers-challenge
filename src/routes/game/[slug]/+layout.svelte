@@ -9,7 +9,7 @@
 
 <style>
 	/*import global css file */
-	@import '../../static/global.css';
+	@import '/static/global.css';
 
 	main {
 		height: 100dvh;

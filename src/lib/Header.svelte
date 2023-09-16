@@ -1,13 +1,32 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import Modal from './helpers/Modal.svelte';
 	let showModal: boolean = false;
+
+	let customSeed: string;
+
+	//on click outside of modal or press enter
+	function newSeedReload() {
+		goto(`/game/${customSeed}`);
+	}
+
+	let modal: Modal;
+	function detectEnterPress(e: KeyboardEvent) {
+		if (e.key === 'Enter') {
+			console.log('enter pressed');
+			e.preventDefault();
+			newSeedReload();
+			modal.close();
+		}
+	}
 </script>
 
 <main>
 	<p>Color Game</p>
 	<button class={showModal ? 'held' : ''} on:click={() => (showModal = true)}> Seed </button>
-	<Modal bind:showModal>
-		<input type="text" />
+	<Modal bind:this={modal} bind:showModal on:close={newSeedReload}>
+		<input type="text" bind:value={customSeed} on:keypress={detectEnterPress} />
 	</Modal>
 </main>
 

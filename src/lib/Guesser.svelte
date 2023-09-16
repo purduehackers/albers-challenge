@@ -2,28 +2,29 @@
 	import { onMount } from 'svelte';
 	import { rgbToHex } from '$lib/helpers/colorHelper';
 
-	let selection: { r: number; g: number; b: number };
+	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
 
 	export let guess: string;
 
-	$: selection.r = Math.min(Math.max(selection.r, 0), 255);
-	$: selection.g = Math.min(Math.max(selection.g, 0), 255);
-	$: selection.r = Math.min(Math.max(selection.b, 0), 255);
+	$: selection.r = Math.min(selection.r, 255);
+	$: selection.g = Math.min(selection.g, 255);
+	$: selection.b = Math.min(selection.b, 255);
+	
 	$: guess = rgbToHex(selection);
 </script>
 
 <main>
 	<label>
 		Red:
-		<input type="number" min="0" max="255" bind:value={selection.r} />
+		<input type="number" min="0" max="255" bind:value={selection.r}/>
 	</label>
 	<label>
 		Green:
-		<input type="number" min="0" max="255" bind:value={selection.g} />
+		<input type="number" min="0" max="255" bind:value={selection.g}/>
 	</label>
 	<label>
 		Blue:
-		<input type="number" min="0" max="255" bind:value={selection.b} />
+		<input type="number" min="0" max="255" bind:value={selection.b}/>
 	</label>
 </main>
 

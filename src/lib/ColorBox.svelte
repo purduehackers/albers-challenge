@@ -1,11 +1,5 @@
 <script lang="ts">
-	import { getRandomColor } from './helpers/colorHelper';
-
 	export let color: string;
-
-	if (!color) {
-		color = getRandomColor();
-	}
 </script>
 
 <div style="background-color: {color};" />
