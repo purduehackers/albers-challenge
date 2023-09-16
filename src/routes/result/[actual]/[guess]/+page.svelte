@@ -64,6 +64,9 @@
 		font-size: 2rem;
 		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
 		transition-duration: 0.1s;
+		display: flex;
+    justify-content: center;
+    align-items: center;
 	}
 	.playAgain:hover {
 		background-color: rgba(255, 255, 255, 0.8);
