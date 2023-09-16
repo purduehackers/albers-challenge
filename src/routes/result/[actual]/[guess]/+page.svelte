@@ -30,18 +30,29 @@
 
 <style>
 	main {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		padding: 2rem;
-		grid-template-columns: 1fr;
-		grid-template-rows: 2fr 1fr 1fr;
 	}
 	main > div {
-		display: grid;
-		height: 20rem;
-		grid-template-columns: 1fr 2fr 1fr;
-		padding: 1rem;
-		grid-template-rows: 1fr;
-		place-items: center;
+		display: flex;
+		flex-direction: column;
+	}
+	@media screen and (min-width: 768px) {
+		main {
+			display: grid;
+			padding: 2rem;
+			grid-template-columns: 1fr;
+			grid-template-rows: 2fr 1fr 1fr;
+		}
+		main > div {
+			display: grid;
+			height: 20rem;
+			grid-template-columns: 1fr 2fr 1fr;
+			padding: 1rem;
+			grid-template-rows: 1fr;
+			place-items: center;
+		}
 	}
 	p {
 		font-size: 3rem;
