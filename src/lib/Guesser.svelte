@@ -74,7 +74,7 @@
 		background-color: #a2a2a2;
 		height: 2rem;
 		margin-top: -0.5rem;
-		border-radius: 1rem;
+		border-radius: 50%;
 		width: 2rem;   
 		border: 0.2rem solid black;
 	}
@@ -82,10 +82,9 @@
 		background-color: #dadada;
 	}
 	input[type="range"]::-moz-range-thumb{
-		border: none; /*Removes extra border that FF applies*/
 		background-color: #a2a2a2;
 		height: 2rem;
-		border-radius: 1rem;
+		border-radius: 50%;
 		width: 2rem;
 		border: 0.2rem solid black;
 	}
