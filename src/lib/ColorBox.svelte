@@ -7,13 +7,13 @@
 <style>
 	div {
 		border-radius: 1rem;
-		aspect-ratio: 1;
 		width: 100%;
+		aspect-ratio: 1;
 		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
 	}
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 800px) {
 		div {
-			aspect-ratio: 3 / 1;
+			aspect-ratio: 2 / 1;
 		}
 	}
 </style>

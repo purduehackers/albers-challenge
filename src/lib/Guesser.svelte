@@ -4,26 +4,18 @@
 	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
 
 	export let guess: string;
-
-	$: selection.r = Math.min(selection.r, 255);
-	$: selection.g = Math.min(selection.g, 255);
-	$: selection.b = Math.min(selection.b, 255);
-	
 	$: guess = rgbToHex(selection);
 </script>
 
 <main>
 	<label>
-		Red:
-		<input type="number" min="0" max="255" bind:value={selection.r}/>
+		<input type="range" min="0" max="255" bind:value={selection.r}/>
 	</label>
 	<label>
-		Green:
-		<input type="number" min="0" max="255" bind:value={selection.g}/>
+		<input type="range" min="0" max="255" bind:value={selection.g}/>
 	</label>
 	<label>
-		Blue:
-		<input type="number" min="0" max="255" bind:value={selection.b}/>
+		<input type="range" min="0" max="255" bind:value={selection.b}/>
 	</label>
 </main>
 
@@ -36,61 +28,74 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, 1fr);
 		gap: 1rem;
-		padding: 1rem;
 		place-items: center;
 	}
 	label {
 		width: 12rem;
 		height: 3rem;
 		border-radius: 2rem;
-		padding: 0.1rem 0.5rem;
+		padding: 0.1rem 1rem;
 		font-size: 1rem;
 		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
 		display: grid;
 		place-items: center;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
 		color: rgba(255, 255, 255, 0.9);
 		transition-duration: 0.1s;
+		appearance: none;
+		
 	}
 	input {
-		width: 4rem;
+		width: 100%;
 		height: 2rem;
-		border: none;
-		border-radius: 1rem;
-		text-align: center;
-		font-size: 1rem;
-		padding: 0.1rem 0.5rem;
-		font-size: 1rem;
-		width: 4.5rem;
-		border: none;
-		padding: 0 0.1rem;
-		border-radius: 1rem;
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.2);
-		transition-duration: 0.1s;
-		color: rgba(255, 255, 255, 0.9);
 	}
 
-	input:focus {
-		outline: none;
-		background-color: rgba(0, 0, 0, 0.5);
+	input[type="range"] {
+		-webkit-appearance: none;
+		appearance: none;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	/***** Chrome, Safari, Opera, and Edge Chromium *****/
+	input[type="range"]::-webkit-slider-runnable-track {
+		background: rgba(0, 0, 0, 0.5);
+		border-radius: 0.5rem;
+		height: 1rem;
+	}
+	
+	input[type="range"]::-moz-range-track {
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 0.5rem;
+	height: 1rem;
+	}
+
+	input[type="range"]::-webkit-slider-thumb {
+		appearance: none;
+		background-color: #a2a2a2;
+		height: 2rem;
+		margin-top: -0.5rem;
+		border-radius: 1rem;
+		width: 2rem;   
+		border: 0.2rem solid black;
+	}
+	input[type="range"]::-webkit-slider-thumb:hover, input[type="range"]::-webkit-slider-thumb:active {
+		background-color: #dadada;
+	}
+	input[type="range"]::-moz-range-thumb{
+		border: none; /*Removes extra border that FF applies*/
+		background-color: #a2a2a2;
+		height: 2rem;
+		border-radius: 1rem;
+		width: 2rem;
+		border: 0.2rem solid black;
+	}
+	input[type="range"]::-moz-range-thumb:hover, input[type="range"]::-moz-range-thumb:active {
+		background-color: #dadada;
 	}
 
 	label:focus-within {
-		transform: translate(-0.1rem, -0.1rem);
-		box-shadow: 0.6rem 0.6rem 0rem rgba(0, 0, 0, 0.5);
-	}
-
-	/*remove number arrows*/
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-	/* Firefox */
-	input[type='number'] {
-		appearance: textfield;
+		transform: translate(-0.2rem, -0.2rem);
+		box-shadow: 0.7rem 0.7rem 0rem rgba(0, 0, 0, 0.5);
 	}
 
 	label:nth-child(1) {
