@@ -14,6 +14,13 @@
 	@media screen and (max-width: 800px) {
 		div {
 			aspect-ratio: 2 / 1;
+			max-width: 80vw;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		div {
+			aspect-ratio: 1 / 1;
 		}
 	}
 </style>

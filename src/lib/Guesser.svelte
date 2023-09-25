@@ -3,20 +3,43 @@
 
 	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
 
+	$: selection.r = selection.r
+
 	export let guess: string;
 	$: guess = rgbToHex(selection);
+
+	function clampValue() {
+		selection.r = Math.min(Math.max(selection.r, 0), 255);
+		selection.g = Math.min(Math.max(selection.g, 0), 255);
+		selection.b = Math.min(Math.max(selection.b, 0), 255);
+	}
 </script>
 
 <main>
-	<label>
-		<input type="range" min="0" max="255" bind:value={selection.r}/>
-	</label>
-	<label>
-		<input type="range" min="0" max="255" bind:value={selection.g}/>
-	</label>
-	<label>
-		<input type="range" min="0" max="255" bind:value={selection.b}/>
-	</label>
+	<div>
+		<label for="red">
+			<input name="red" type="range" min="0" max="255" bind:value={selection.r} bind/>
+		</label>
+		<label>
+			<input name="red" type="number" min="0" max="255" bind:value={selection.r}/>
+		</label>
+	</div>
+	<div>
+		<label for="green">
+			<input name="red" type="range" min="0" max="255" bind:value={selection.g}/>
+		</label>
+		<label>
+			<input type="number" min="0" max="255" bind:value={selection.g}/>
+		</label>
+	</div>
+	<div>
+		<label>
+			<input type="range" min="0" max="255" bind:value={selection.b}/>
+		</label>
+		<label>
+			<input type="number" min="0" max="255" bind:value={selection.b}/>
+		</label>
+	</div>
 </main>
 
 <style>
@@ -29,6 +52,13 @@
 		grid-template-rows: repeat(3, 1fr);
 		gap: 1rem;
 		place-items: center;
+		padding: 1rem;
+	}
+
+	main div {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 1fr 1fr;
 	}
 	label {
 		width: 12rem;
@@ -43,6 +73,10 @@
 		transition-duration: 0.1s;
 		appearance: none;
 		
+	}
+
+	label:nth-child(2) {
+		width: fit-content;
 	}
 	input {
 		width: 100%;
@@ -97,13 +131,67 @@
 		box-shadow: 0.7rem 0.7rem 0rem rgba(0, 0, 0, 0.5);
 	}
 
-	label:nth-child(1) {
+
+	input[type="number"] {
+		height: 2rem;
+		border: none;
+		border-radius: 1rem;
+		text-align: center;
+		font-size: 1rem;
+		padding: 0.1rem 0.5rem;
+		font-size: 1rem;
+		width: 3rem;
+		border: none;
+		padding: 0 0.1rem;
+		border-radius: 1rem;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.2);
+		transition-duration: 0.1s;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	input[type="number"]:focus {
+		outline: none;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	/*remove number arrows*/
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	/* Firefox */
+	input[type='number'] {
+		appearance: textfield;
+	}
+
+
+
+	div:nth-child(1) label {
 		background-color: rgba(255, 0, 0, 0.3);
 	}
-	label:nth-child(2) {
+	div:nth-child(2) label {
 		background-color: rgba(0, 255, 0, 0.3);
 	}
-	label:nth-child(3) {
+	div:nth-child(3) label {
 		background-color: rgba(0, 0, 255, 0.3);
+	}
+
+	@media screen and (max-width: 800px) {
+		main {
+			place-items: start center;
+		}
+
+		main div {
+			grid-template-columns: 6fr 4fr;
+		}
+
+		label:nth-child(1) {
+			place-self: center start;
+		}
+		label:nth-child(2) {
+			place-self: end center;
+		}
 	}
 </style>

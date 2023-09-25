@@ -30,7 +30,7 @@
 	main {
 		display: grid;
 		margin: 0 auto;
-		padding-top: 2rem;
+		padding-top: 0rem;
 		width: 100%;
 		max-width: 50rem;
 		grid-template-columns: 1fr;
@@ -38,16 +38,20 @@
 		place-items: start center;
 	}
 	main > div {
-		width: 80%;
-		padding: 2rem;
+		width:90%;
+		padding: 1rem;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 60% 40%;
 		grid-template-rows: 1fr;
 		place-items: center;
 	}
 
 	@media (max-width: 800px) {
+		main {
+			max-width: 90vw;
+		}
 		main > div {
+			max-width: 90vw;	
 			grid-template-columns: 1fr;
 			grid-template-rows: 1fr 1fr;
 		}
