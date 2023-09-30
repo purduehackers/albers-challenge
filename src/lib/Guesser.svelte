@@ -1,43 +1,40 @@
 <script lang="ts">
 	import { rgbToHex } from '$lib/helpers/colorHelper';
 
-	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
+
+	export let roundingFactor: number;
+
+	let selection: { r: number; g: number; b: number } = {r: 128/roundingFactor, g: 128/roundingFactor, b: 128/roundingFactor};
 
 	$: selection.r = selection.r
 
 	export let guess: string;
-	$: guess = rgbToHex(selection);
-
-	function clampValue() {
-		selection.r = Math.min(Math.max(selection.r, 0), 255);
-		selection.g = Math.min(Math.max(selection.g, 0), 255);
-		selection.b = Math.min(Math.max(selection.b, 0), 255);
-	}
+	$: guess = rgbToHex(selection, roundingFactor);
 </script>
 
 <main>
 	<div>
 		<label for="red">
-			<input name="red" type="range" min="0" max="255" bind:value={selection.r} bind/>
+			<input name="red" type="range" min="0" max={256/roundingFactor} bind:value={selection.r} />
 		</label>
 		<label>
-			<input name="red" type="number" min="0" max="255" bind:value={selection.r}/>
+			<input disabled name="red" type="number" min="0" max="255" value={selection.r * roundingFactor} />
 		</label>
 	</div>
 	<div>
 		<label for="green">
-			<input name="red" type="range" min="0" max="255" bind:value={selection.g}/>
+			<input name="red" type="range" min="0" max={256/roundingFactor} bind:value={selection.g} />
 		</label>
 		<label>
-			<input type="number" min="0" max="255" bind:value={selection.g}/>
+			<input disabled type="number" min="0" max="255" value={selection.g * roundingFactor} />
 		</label>
 	</div>
 	<div>
 		<label>
-			<input type="range" min="0" max="255" bind:value={selection.b}/>
+			<input type="range" min="0" max={256/roundingFactor} bind:value={selection.b}/>
 		</label>
 		<label>
-			<input type="number" min="0" max="255" bind:value={selection.b}/>
+			<input disabled type="number" min="0" max="255" value={selection.b * roundingFactor} />
 		</label>
 	</div>
 </main>
@@ -126,10 +123,11 @@
 		background-color: #dadada;
 	}
 
-	label:focus-within {
+	div:focus-within > label {
 		transform: translate(-0.2rem, -0.2rem);
 		box-shadow: 0.7rem 0.7rem 0rem rgba(0, 0, 0, 0.5);
 	}
+
 
 
 	input[type="number"] {

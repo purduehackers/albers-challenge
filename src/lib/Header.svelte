@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 	import Modal from './helpers/Modal.svelte';
 	let showModal: boolean = false;
 
@@ -23,7 +22,7 @@
 </script>
 
 <main>
-	<p>Color Game</p>
+	<h1>Albers' Challenge</h1>
 	<button class={showModal ? 'held' : ''} on:click={() => (showModal = true)}> Seed </button>
 	<Modal bind:this={modal} bind:showModal on:close={newSeedReload}>
 		<input type="text" bind:value={customSeed} on:keypress={detectEnterPress} />
@@ -40,9 +39,10 @@
 		background-color: rgba(255, 255, 255, 0.5);
 		place-items: center;
 	}
-	main > p {
+	main > h1 {
 		text-shadow: 0.1rem 0.1rem 0rem rgba(0, 0, 0, 0.5);
 		font-weight: 900;
+		color: white;
 		font-size: 3rem;
 	}
 
@@ -89,7 +89,7 @@
 
 	/*media query for if screen is less than 600px wide*/
 	@media (max-width: 900px) {
-		main > p {
+		main > h1 {
 			font-size: 2rem;
 		}
 	}
