@@ -6,3 +6,6 @@
 ##### We use this to test who is the best graphics nerd :)
 
 > available rn @ albers.navinate.com
+
+![image](https://github.com/purduehackers/color-game/assets/17831684/d29e7f33-d85f-4a58-9891-6dfaff83b1b5)
+
