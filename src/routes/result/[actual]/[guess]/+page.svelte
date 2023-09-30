@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ColorBox from '$lib/ColorBox.svelte';
+	import ResultColorBox from '$lib/ResultColorBox.svelte';
 	import Result from '$lib/Result.svelte';
 	import { hexToRgb } from '$lib/helpers/colorHelper';
 	import type { PageData } from './$types';
@@ -27,9 +27,9 @@
 
 <main>
 	<div class="results">
-		<ColorBox color={"#"+data.actual} />
+		<ResultColorBox color={"#"+data.actual} />
 		<Result {actual} {guess} />
-		<ColorBox color={"#"+data.guess} />
+		<ResultColorBox color={"#"+data.guess} />
 	</div>
 	<div class="scoreContainer">
 		<p>Score: {score}%</p>
@@ -65,8 +65,8 @@
 		box-shadow: 0.5rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
 		transition-duration: 0.1s;
 		display: flex;
-    justify-content: center;
-    align-items: center;
+    	justify-content: center;
+    	align-items: center;
 	}
 	.playAgain:hover {
 		background-color: rgba(255, 255, 255, 0.8);

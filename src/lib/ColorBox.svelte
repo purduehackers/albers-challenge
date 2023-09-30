@@ -2,8 +2,8 @@
 	import { getRandomColor } from "./helpers/colorHelper";
 
 	export let color: string;
-	let contextColor1 = getRandomColor(color + "AWHDIUEHFU", 8);
-	let contextColor2 = getRandomColor(color + "WUIRUFIURN", 8);
+	let contextColor1 = getRandomColor(color + "AWHDIUEHFU");
+	let contextColor2 = getRandomColor(color + "WUIRUFIURN");
 
 </script>
 <main>

@@ -2,39 +2,38 @@
 	import { rgbToHex } from '$lib/helpers/colorHelper';
 
 
-	export let roundingFactor: number;
 
-	let selection: { r: number; g: number; b: number } = {r: 128/roundingFactor, g: 128/roundingFactor, b: 128/roundingFactor};
+	let selection: { r: number; g: number; b: number } = {r: 128, g: 128, b: 128};
 
 	$: selection.r = selection.r
 
 	export let guess: string;
-	$: guess = rgbToHex(selection, roundingFactor);
+	$: guess = rgbToHex(selection);
 </script>
 
 <main>
 	<div>
 		<label for="red">
-			<input name="red" type="range" min="0" max={256/roundingFactor} bind:value={selection.r} />
+			<input name="red" type="range" min="0" max="255" bind:value={selection.r} />
 		</label>
 		<label>
-			<input disabled name="red" type="number" min="0" max="255" value={selection.r * roundingFactor} />
+			<input disabled name="red" type="number" min="0" max="255" value={selection.r} />
 		</label>
 	</div>
 	<div>
 		<label for="green">
-			<input name="red" type="range" min="0" max={256/roundingFactor} bind:value={selection.g} />
+			<input name="red" type="range" min="0" max="255" bind:value={selection.g} />
 		</label>
 		<label>
-			<input disabled type="number" min="0" max="255" value={selection.g * roundingFactor} />
+			<input disabled type="number" min="0" max="255" value={selection.g} />
 		</label>
 	</div>
 	<div>
 		<label>
-			<input type="range" min="0" max={256/roundingFactor} bind:value={selection.b}/>
+			<input type="range" min="0" max="255" bind:value={selection.b}/>
 		</label>
 		<label>
-			<input disabled type="number" min="0" max="255" value={selection.b * roundingFactor} />
+			<input disabled type="number" min="0" max="255" value={selection.b} />
 		</label>
 	</div>
 </main>

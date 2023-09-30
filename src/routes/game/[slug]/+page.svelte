@@ -8,9 +8,8 @@
 
 	export let data: PageData;	
 
-	const roundingFactor = 8;
 
-	$: color = getRandomColor(data.seed, roundingFactor);
+	$: color = getRandomColor(data.seed);
 	let guess: string;
 
     function submitGuess() {
@@ -23,7 +22,7 @@
 	<h1>Guess the color of the smallest squares!</h1>
 	<div>
 		<ColorBox bind:color />
-		<Guesser {roundingFactor} bind:guess />
+		<Guesser bind:guess />
 	</div>
 		<SubmitButton on:submitted={submitGuess} text="Guess!" />
 </main>
@@ -67,7 +66,7 @@
 		main > h1 {
 			font-size: 1.5rem;
 			text-align: center;
-			padding: ;
+			padding: 0px;
 		}
 	}
 </style>

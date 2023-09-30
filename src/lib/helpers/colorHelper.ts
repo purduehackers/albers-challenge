@@ -1,7 +1,7 @@
 import type { rgbColor } from "$lib/types/rgbColor";
 import CryptoJS from "crypto-js";
 
-export function getRandomColor(seed: string, roundingFactor: number) : string {
+export function getRandomColor(seed: string) : string {
     var color = '';
     for (var i = 0; i < 3; i++) {
         let rand256 = Math.floor(generateRandomNumber(seed + i) * 256);
@@ -19,8 +19,8 @@ function generateRandomNumber(seed: string): number {
     return decimalValue;
   }
 
-export function rgbToHex(rgb: rgbColor, roundingFactor: number): string {
-    return "#" + componentToHex(rgb.r* roundingFactor) + componentToHex(rgb.g* roundingFactor) + componentToHex(rgb.b* roundingFactor);
+export function rgbToHex(rgb: rgbColor): string {
+    return "#" + componentToHex(rgb.r) + componentToHex(rgb.g) + componentToHex(rgb.b);
 }
 
 export function hexToRgb(hex: string): rgbColor {
